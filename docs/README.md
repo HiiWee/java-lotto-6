@@ -20,8 +20,8 @@
 로또 게임 기능 목록
 
 예외
-- [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 하고그 부분부터 입력을 다시 받는다.
-- [ ] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
+- [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 하고그 부분부터 입력을 다시 받는다.
+- [x] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
 
 입력
 - [x] 로또 구입 금액을 입력 받음
@@ -33,9 +33,9 @@
 
 출력
 - [x] 구입한 로또 목록을 오름차순으로 정렬하여 출력해야 합니다.
-- [ ] 당첨 내역을 출력해야 한다.
-- [ ] 수익률은 소수점 둘째 자리에서 반올림 (1000단위마다 ,로 구분)
-- [ ] 예외 상황시 `[ERROR]`로 시작하는 문구 출력
+- [x] 당첨 내역을 출력해야 한다.
+- [x] 수익률은 소수점 둘째 자리에서 반올림 (1000단위마다 ,로 구분)
+- [x] 예외 상황시 `[ERROR]`로 시작하는 문구 출력
 
 로또
 - [x] 1개의 로또를 발행할 때 6개의 숫자를 뽑습니다.

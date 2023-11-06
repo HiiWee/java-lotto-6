@@ -18,4 +18,10 @@ public record Lottos(List<Lotto> lottos) {
     public List<Lotto> lottos() {
         return Collections.unmodifiableList(lottos);
     }
+
+    public List<LottoRewardCondition> compareWinningLotto(final WinningLotto winningLotto) {
+        return lottos.stream()
+                .map(winningLotto::findCompareResult)
+                .toList();
+    }
 }

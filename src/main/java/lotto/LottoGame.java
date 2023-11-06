@@ -3,7 +3,9 @@ package lotto;
 import java.util.List;
 import lotto.domain.LottoMachine;
 import lotto.dto.BuyingResults;
+import lotto.dto.WinningResults;
 import lotto.generator.RandomNumbersGenerator;
+import lotto.generator.WinningMessageGenerator;
 import lotto.resolver.ExceptionResolver;
 import lotto.validator.input.InputCommonValidator;
 import lotto.view.InputView;
@@ -25,6 +27,7 @@ public class LottoGame {
         ExceptionResolver.resolveProcess(LottoGame::buyLottos, this);
         printBuyingLottos();
         ExceptionResolver.resolveProcess(LottoGame::inputWinningLotto, this);
+        printWinningResults();
     }
 
     private void buyLottos() {
@@ -43,6 +46,12 @@ public class LottoGame {
         List<Integer> numbers = ExceptionResolver.resolveInput(this::inputWinningNumbers);
         int bonusNumber = ExceptionResolver.resolveInput(this::inputBonusNumber);
         lottoMachine.addWinningLotto(numbers, bonusNumber);
+    }
+
+    private void printWinningResults() {
+        WinningResults winningResults = lottoMachine.createWinningResults();
+        String winningResultsMessage = WinningMessageGenerator.generate(winningResults);
+        outputView.printWinningResults(winningResultsMessage);
     }
 
     private List<Integer> inputWinningNumbers() {
