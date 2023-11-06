@@ -1,6 +1,6 @@
-package lotto.validator;
+package lotto.validator.input;
 
-import lotto.validator.input.InputExceptionMessage;
+import lotto.validator.input.exception.InputExceptionMessage;
 
 public class InputCommonValidator {
 

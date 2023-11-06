@@ -1,4 +1,4 @@
-package lotto.validator.input;
+package lotto.validator.input.exception;
 
 public class InputIllegalArgumentException extends IllegalArgumentException {
 
