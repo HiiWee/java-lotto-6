@@ -20,8 +20,8 @@ public class Lotto {
         return Collections.unmodifiableList(numbers);
     }
 
-    public boolean contains(final int bonusNumber) {
-        return numbers.contains(bonusNumber);
+    public boolean contains(final int number) {
+        return numbers.contains(number);
     }
 
     public int calculateWinningCount(final Lotto lotto) {
