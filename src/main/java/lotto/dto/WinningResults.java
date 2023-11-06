@@ -27,14 +27,14 @@ public record WinningResults(Map<LottoRewardCondition, Integer> rewardCountResul
 
     public double calculateProfitRatio() {
         int resultCount = countResults();
-        int totalPrizeMoney = calculateTotalPrize();
+        long totalPrizeMoney = calculateTotalPrize();
         return totalPrizeMoney / (double) (resultCount * LottoMoneyCondition.MONEY_UNIT.value()) * 100;
     }
 
-    private int calculateTotalPrize() {
+    private long calculateTotalPrize() {
         return rewardCountResults.entrySet()
                 .stream()
-                .mapToInt(resultEntry -> resultEntry.getValue() * resultEntry.getKey().getPrizeMoney())
+                .mapToLong(resultEntry -> resultEntry.getValue() * resultEntry.getKey().getPrizeMoney())
                 .sum();
     }
 
