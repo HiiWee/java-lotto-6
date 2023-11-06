@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
@@ -33,5 +34,21 @@ class WinningLottoTest {
         // when & then
         assertThatIllegalArgumentException().isThrownBy(() -> WinningLotto.createFrom(numbers, bonusNumber))
                 .withMessageContaining(DomainExceptionMessage.OUT_OF_RANGE_BONUS_NUMBER.message());
+    }
+
+    @DisplayName("입력받은 로또에 대한 비교 결과를 찾을 수 있다.")
+    @Test
+    void findCompareResult() {
+        // given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningLotto winningLotto = WinningLotto.createFrom(numbers, bonusNumber);
+        Lotto lotto = Lotto.createFrom(numbers);
+
+        // when
+        LottoRewardCondition compareResult = winningLotto.findCompareResult(lotto);
+
+        // then
+        assertThat(compareResult).isEqualTo(LottoRewardCondition.FIRST_REWARD);
     }
 }
