@@ -1,7 +1,8 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import lotto.domain.money.LottoMoney;
 import lotto.validator.domain.exception.DomainExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

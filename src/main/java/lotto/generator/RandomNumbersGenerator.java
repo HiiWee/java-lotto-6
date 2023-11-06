@@ -3,7 +3,7 @@ package lotto.generator;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.function.Supplier;
-import lotto.domain.LottoCondition;
+import lotto.domain.lotto.LottoCondition;
 
 public class RandomNumbersGenerator {
 

@@ -1,6 +1,6 @@
 package lotto.validator.domain;
 
-import lotto.domain.LottoMoneyCondition;
+import lotto.domain.money.LottoMoneyCondition;
 import lotto.validator.domain.exception.DomainExceptionMessage;
 
 public class LottoMoneyValidator {

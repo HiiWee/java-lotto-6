@@ -1,7 +1,7 @@
 package lotto.validator.domain;
 
 import java.util.List;
-import lotto.domain.LottoCondition;
+import lotto.domain.lotto.LottoCondition;
 import lotto.validator.domain.exception.DomainExceptionMessage;
 
 public class LottoNumbersValidator {

@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoMachine;
+import lotto.domain.lotto.LottoMachine;
 import lotto.generator.RandomNumbersGenerator;
 import lotto.resolver.ExceptionResolver;
 import lotto.validator.input.InputCommonValidator;
