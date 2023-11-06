@@ -77,5 +77,4 @@ public class LottoGame {
         InputCommonValidator.validateNumber(inputPrice);
         return inputPrice;
     }
-
 }
