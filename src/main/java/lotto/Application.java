@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.lotto.LottoMachine;
+import lotto.domain.LottoMachine;
 import lotto.domain.lotto.LottoRepository;
 import lotto.view.InputView;
 import lotto.view.OutputView;

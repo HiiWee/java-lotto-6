@@ -5,6 +5,8 @@ import java.util.function.Supplier;
 import lotto.domain.lotto.LottoRepository;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.money.LottoMoney;
+import lotto.dto.BuyingResults;
+import lotto.validator.domain.exception.DomainExceptionMessage;
 
 public class LottoMachine {
 
@@ -19,5 +21,15 @@ public class LottoMachine {
         int count = money.calculateBuyingCount();
         Lottos lottos = Lottos.createFrom(count, lottoNumbersSupplier);
         lottoRepository.saveBuyingLottos(lottos);
+    }
+
+    public BuyingResults createBuyingResults() {
+        Lottos buyingLottos = findBuyingLottosObject();
+        return BuyingResults.createFrom(buyingLottos);
+    }
+
+    private Lottos findBuyingLottosObject() {
+        return lottoRepository.findBuyingLottos()
+                .orElseThrow(DomainExceptionMessage.NOT_FOUND_LOTTO::create);
     }
 }

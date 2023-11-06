@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.validator.domain.LottoNumbersValidator;
 
@@ -13,5 +14,9 @@ public class Lotto {
     public static Lotto createFrom(final List<Integer> numbers) {
         LottoNumbersValidator.validate(numbers);
         return new Lotto(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 }

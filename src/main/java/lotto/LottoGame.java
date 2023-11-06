@@ -1,6 +1,7 @@
 package lotto;
 
-import lotto.domain.lotto.LottoMachine;
+import lotto.domain.LottoMachine;
+import lotto.dto.BuyingResults;
 import lotto.generator.RandomNumbersGenerator;
 import lotto.resolver.ExceptionResolver;
 import lotto.validator.input.InputCommonValidator;
@@ -21,12 +22,19 @@ public class LottoGame {
 
     public void startGame() {
         ExceptionResolver.resolveProcess(LottoGame::buyLottos, this);
+        printBuyingLottos();
     }
 
     private void buyLottos() {
         String inputPrice = ExceptionResolver.resolveInput(this::inputPrice);
         int price = Integer.parseInt(inputPrice);
         lottoMachine.buyLottos(price, RandomNumbersGenerator.getGenerateSupplier());
+    }
+
+    private void printBuyingLottos() {
+        BuyingResults buyingResults = lottoMachine.createBuyingResults();
+        String resultMessage = buyingResults.createTotalResultMessage();
+        outputView.printBuyingLottos(buyingResults.getBuyingCount(), resultMessage);
     }
 
     private String inputPrice() {
