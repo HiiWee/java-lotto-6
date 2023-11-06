@@ -15,4 +15,8 @@ public class LottoRepository {
     public Optional<Lottos> findBuyingLottos() {
         return Optional.ofNullable((Lottos) stores.get(LottoType.BUYING_LOTTOS));
     }
+
+    public void saveWinningLotto(final WinningLotto winningLotto) {
+        stores.put(LottoType.WINNING_LOTTO, winningLotto);
+    }
 }

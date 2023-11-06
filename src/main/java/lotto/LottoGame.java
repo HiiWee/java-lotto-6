@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.List;
 import lotto.domain.LottoMachine;
 import lotto.dto.BuyingResults;
 import lotto.generator.RandomNumbersGenerator;
@@ -23,6 +24,7 @@ public class LottoGame {
     public void startGame() {
         ExceptionResolver.resolveProcess(LottoGame::buyLottos, this);
         printBuyingLottos();
+        ExceptionResolver.resolveProcess(LottoGame::inputWinningLotto, this);
     }
 
     private void buyLottos() {
@@ -35,6 +37,30 @@ public class LottoGame {
         BuyingResults buyingResults = lottoMachine.createBuyingResults();
         String resultMessage = buyingResults.createTotalResultMessage();
         outputView.printBuyingLottos(buyingResults.getBuyingCount(), resultMessage);
+    }
+
+    private void inputWinningLotto() {
+        List<Integer> numbers = ExceptionResolver.resolveInput(this::inputWinningNumbers);
+        int bonusNumber = ExceptionResolver.resolveInput(this::inputBonusNumber);
+        lottoMachine.addWinningLotto(numbers, bonusNumber);
+    }
+
+    private List<Integer> inputWinningNumbers() {
+        List<String> numbers = inputView.inputWinningNumber();
+        InputCommonValidator.validateNumbers(numbers);
+        return convertToNumbers(numbers);
+    }
+
+    private int inputBonusNumber() {
+        String number = inputView.inputBonusNumber();
+        InputCommonValidator.validateNumber(number);
+        return Integer.parseInt(number);
+    }
+
+    private List<Integer> convertToNumbers(final List<String> numbers) {
+        return numbers.stream()
+                .map(Integer::parseInt)
+                .toList();
     }
 
     private String inputPrice() {

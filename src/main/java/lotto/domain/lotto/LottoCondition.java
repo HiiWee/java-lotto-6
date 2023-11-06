@@ -22,7 +22,7 @@ public enum LottoCondition {
         return numbers.size() != LOTTO_LENGTH.value;
     }
 
-    private static boolean isOutOfRange(final List<Integer> numbers) {
+    public static boolean isOutOfRange(final List<Integer> numbers) {
         return numbers.stream()
                 .anyMatch(number -> number < START_NUMBER.value || number > END_NUMBER.value);
     }
