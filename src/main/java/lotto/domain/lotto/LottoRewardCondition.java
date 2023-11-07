@@ -19,6 +19,14 @@ public enum LottoRewardCondition {
         this.prizeMoney = prizeMoney;
     }
 
+    public long prizeMoney() {
+        return prizeMoney;
+    }
+
+    public boolean isNotFail() {
+        return this != FAIL;
+    }
+
     public static LottoRewardCondition findReward(final int winningCount, final boolean hasBonusNumber) {
         if (winningCount == SECOND_WINNING.winningCount && hasBonusNumber) {
             return SECOND_WINNING;

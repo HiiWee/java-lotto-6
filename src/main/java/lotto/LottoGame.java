@@ -5,6 +5,7 @@ import lotto.domain.LottoMachine;
 import lotto.dto.BuyingResults;
 import lotto.dto.WinningResults;
 import lotto.generator.RandomLottoNumbersGenerator;
+import lotto.generator.WinningResultsMessageGenerator;
 import lotto.resolver.ExceptionResolver;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -48,8 +49,7 @@ public class LottoGame {
 
     private void printWinningResults() {
         WinningResults winningResults = lottoMachine.createWinningResults();
-
+        String resultsMessage = WinningResultsMessageGenerator.generate(winningResults);
+        outputView.printWinningResults(resultsMessage);
     }
-
-
 }
