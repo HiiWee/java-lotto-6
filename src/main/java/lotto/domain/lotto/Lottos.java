@@ -15,4 +15,10 @@ public record Lottos(List<Lotto> lottos) {
                 .map(Lotto::createFrom)
                 .toList());
     }
+
+    public List<LottoRewardCondition> createCompareResults(final WinningLotto winningLotto) {
+        return lottos.stream()
+                .map(winningLotto::createCompareResult)
+                .toList();
+    }
 }

@@ -18,4 +18,10 @@ public class WinningLotto {
         BonusNumberValidator.validate(lotto, bonusNumber);
         return new WinningLotto(lotto, bonusNumber);
     }
+
+    public LottoRewardCondition createCompareResult(final Lotto compareLotto) {
+        int winningCount = lotto.calculateWinningCount(compareLotto);
+        boolean hasBonusNumber = compareLotto.contains(bonusNumber);
+        return LottoRewardCondition.findReward(winningCount, hasBonusNumber);
+    }
 }

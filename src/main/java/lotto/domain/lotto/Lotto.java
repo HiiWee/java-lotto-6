@@ -23,4 +23,10 @@ public class Lotto {
     public boolean contains(final int number) {
         return numbers.contains(number);
     }
+
+    public int calculateWinningCount(final Lotto compareLotto) {
+        return (int) numbers.stream()
+                .filter(compareLotto::contains)
+                .count();
+    }
 }
