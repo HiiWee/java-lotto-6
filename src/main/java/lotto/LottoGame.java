@@ -37,7 +37,7 @@ public class LottoGame {
     private void printBuyingLottos() {
         BuyingResults buyingResults = lottoMachine.createBuyingResults();
         int buyingCount = buyingResults.getBuyingCount();
-        String resultsMessage = buyingResults.createResultsMessage();
+        String resultsMessage = buyingResults.createMessage();
         outputView.printBuyingResults(buyingCount, resultsMessage);
     }
 

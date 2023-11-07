@@ -15,7 +15,7 @@ public record BuyingResults(List<BuyingResult> results) {
                 .toList());
     }
 
-    public String createResultsMessage() {
+    public String createMessage() {
         return results.stream()
                 .map(BuyingResult::createResultMessage)
                 .collect(Collectors.joining(DELIMITER));
