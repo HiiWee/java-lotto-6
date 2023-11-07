@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 import lotto.domain.money.LottoMoney;
 
+// 생성자도 막아야 불변 아닐까?
 public record Lottos(List<Lotto> lottos) {
 
     public static Lottos createFrom(final Supplier<List<Integer>> lottoSupplier, final LottoMoney money) {

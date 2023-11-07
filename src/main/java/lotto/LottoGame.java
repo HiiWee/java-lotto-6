@@ -41,5 +41,6 @@ public class LottoGame {
     private void addWinningLotto() {
         List<Integer> winningNumbers = inputView.inputWinningNumbers();
         int bonusNumber = inputView.inputBonusNumber();
+        lottoMachine.addWinningLotto(winningNumbers, bonusNumber);
     }
 }
