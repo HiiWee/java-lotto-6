@@ -4,4 +4,5 @@ public enum LottoType {
 
     BUYING_LOTTOS,
     WINING_LOTTO
+
 }
