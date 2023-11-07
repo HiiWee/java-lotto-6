@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.List;
 import lotto.domain.LottoMachine;
 import lotto.dto.BuyingResults;
 import lotto.generator.RandomLottoNumbersGenerator;
@@ -22,6 +23,7 @@ public class LottoGame {
     public void startGame() {
         ExceptionResolver.resolveProcess(LottoGame::buyLottos, this);
         printBuyingLottos();
+        ExceptionResolver.resolveProcess(LottoGame::addWinningLotto, this);
     }
 
     private void buyLottos() {
@@ -34,5 +36,10 @@ public class LottoGame {
         int buyingCount = buyingResults.getBuyingCount();
         String resultsMessage = buyingResults.createResultsMessage();
         outputView.printBuyingResults(buyingCount, resultsMessage);
+    }
+
+    private void addWinningLotto() {
+        List<Integer> winningNumbers = inputView.inputWinningNumbers();
+        int bonusNumber = inputView.inputBonusNumber();
     }
 }
