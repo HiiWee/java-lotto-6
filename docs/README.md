@@ -25,8 +25,8 @@
 - [ ] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
 
 입력
-- [ ] 로또 구입 금액 입력
-  - [ ] `검증` 숫자만 입력해야 함
+- [x] 로또 구입 금액 입력
+  - [x] `검증` 숫자만 입력해야 함
 - [ ] 당첨 번호 입력
   - [ ] `검증` 숫자만 입력해야 함
 - [ ] 보너스 번호 입력
