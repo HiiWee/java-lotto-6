@@ -1,10 +1,14 @@
 package lotto.domain.lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
+import lotto.validator.domain.exception.DomainExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class WinningLottoTest {
 
@@ -22,5 +26,29 @@ class WinningLottoTest {
 
         // then
         assertThat(result).isEqualTo(LottoRewardCondition.FIRST_WINNER);
+    }
+
+    @DisplayName("보너스 번호가 중복이라면 예외가 발생한다.")
+    @Test
+    void bonusNumber_exception_duplicatesWithLotto() {
+        // given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 6;
+
+        // when & then
+        assertThatIllegalArgumentException().isThrownBy(() -> WinningLotto.createFrom(numbers, bonusNumber))
+                .withMessageContaining(DomainExceptionMessage.DUPLICATES_BONUS_NUMBER.value());
+    }
+
+    @DisplayName("보너스 번호가 범위를 벗어나면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 46})
+    void bonusNumber_exception_outOfRange(int bonusNumber) {
+        // given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+
+        // when & then
+        assertThatIllegalArgumentException().isThrownBy(() -> WinningLotto.createFrom(numbers, bonusNumber))
+                .withMessageContaining(DomainExceptionMessage.OUT_OF_RANGE_NUMBER.value());
     }
 }
