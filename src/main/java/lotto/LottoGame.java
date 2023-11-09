@@ -34,6 +34,11 @@ public class LottoGame {
         lottoMachine.buyLottos(RandomLottoNumberGenerator.getSupplier(), price);
     }
 
+    private void printBuyingResults() {
+        BuyingResults buyingResults = lottoMachine.createBuyingResults();
+        outputView.printBuyingResults(buyingResults.getBuyingCount(), buyingResults.createResultMessage());
+    }
+
     private void inputWinningLotto() {
         List<Integer> winningNumbers = inputView.inputLottoNumbers();
         int bonusNumber = inputView.inputBonusNumber();
@@ -44,10 +49,5 @@ public class LottoGame {
         WinningResults winningResults = lottoMachine.createWinningResults();
         String message = WinningResultMessageGenerator.generate(winningResults);
         outputView.printWinningResult(message);
-    }
-
-    private void printBuyingResults() {
-        BuyingResults buyingResults = lottoMachine.createBuyingResults();
-        outputView.printBuyingResults(buyingResults.getBuyingCount(), buyingResults.createResultMessage());
     }
 }
