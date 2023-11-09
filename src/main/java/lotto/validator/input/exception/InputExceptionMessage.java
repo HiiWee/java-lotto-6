@@ -2,7 +2,7 @@ package lotto.validator.input.exception;
 
 public enum InputExceptionMessage {
 
-    INVALID_NUMBER_FORMAT("[ERROR] 숫자만 입력해야 합니다.");
+    INVALID_NUMBER_FORMAT("숫자만 입력해야 합니다.");
 
     private final String value;
 
