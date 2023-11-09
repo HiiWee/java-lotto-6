@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 import lotto.domain.LottoMachine;
 import lotto.dto.BuyingResults;
-import lotto.dto.WinningResults;
+import lotto.dto.WinningReward;
 import lotto.generator.RandomLottoNumberGenerator;
 import lotto.generator.WinningResultMessageGenerator;
 import lotto.resolver.ExceptionResolver;
@@ -46,8 +46,8 @@ public class LottoGame {
     }
 
     private void printWinningResult() {
-        WinningResults winningResults = lottoMachine.createWinningResults();
-        String message = WinningResultMessageGenerator.generate(winningResults);
+        WinningReward winningReward = lottoMachine.createWinningReward();
+        String message = WinningResultMessageGenerator.generate(winningReward);
         outputView.printWinningResult(message);
     }
 }

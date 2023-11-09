@@ -2,7 +2,8 @@ package lotto.generator;
 
 import java.util.List;
 import lotto.domain.lotto.LottoRewardCondition;
-import lotto.dto.WinningResults;
+import lotto.domain.result.WinningResults;
+import lotto.dto.WinningReward;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,11 +21,10 @@ class WinningResultMessageGeneratorTest {
                 5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
                 6개 일치 (2,000,000,000원) - 1개
                 총 수익률은 100,000,250.0%입니다.""";
-        WinningResults winningResults = WinningResults.createFrom(
-                List.of(LottoRewardCondition.FIRST_WINNER, LottoRewardCondition.FIFTH_WINNER));
+        WinningReward winningReward = new WinningReward(List.of(1, 0, 0, 0, 1), 100_000_250.0);
 
         // when
-        String actualWinningMessage = WinningResultMessageGenerator.generate(winningResults);
+        String actualWinningMessage = WinningResultMessageGenerator.generate(winningReward);
 
         // then
         Assertions.assertThat(actualWinningMessage).isEqualTo(expectWinningMessage);

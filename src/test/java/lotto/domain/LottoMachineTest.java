@@ -11,7 +11,8 @@ import lotto.domain.lotto.LottoRewardCondition;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.dto.BuyingResults;
-import lotto.dto.WinningResults;
+import lotto.domain.result.WinningResults;
+import lotto.dto.WinningReward;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -88,9 +89,9 @@ class LottoMachineTest {
         lottoMachine.addWinningLotto(List.of(1, 2, 3, 4, 5, 7), 6);
 
         // when
-        WinningResults winningResults = lottoMachine.createWinningResults();
-        List<Integer> sortedRewardCounts = winningResults.getSortedRewardCounts();
-        double actualProfitRatio = winningResults.getProfitRatio();
+        WinningReward winningReward = lottoMachine.createWinningReward();
+        List<Integer> sortedRewardCounts = winningReward.sortedRewardCounts();
+        double actualProfitRatio = winningReward.profitRatio();
 
         // then
         assertAll(

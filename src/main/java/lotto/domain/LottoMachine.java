@@ -3,12 +3,12 @@ package lotto.domain;
 import java.util.List;
 import java.util.function.Supplier;
 import lotto.domain.lotto.LottoRepository;
-import lotto.domain.lotto.LottoRewardCondition;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.domain.money.LottoMoney;
 import lotto.dto.BuyingResults;
-import lotto.dto.WinningResults;
+import lotto.domain.result.WinningResults;
+import lotto.dto.WinningReward;
 import lotto.validator.domain.exception.DomainExceptionMessage;
 
 public class LottoMachine {
@@ -35,11 +35,11 @@ public class LottoMachine {
         lottoRepository.saveWinningLotto(winningLotto);
     }
 
-    public WinningResults createWinningResults() {
+    public WinningReward createWinningReward() {
         Lottos buyingLottos = findBuyingLottosObject();
         WinningLotto winningLotto = findWinningLottoObject();
-        List<LottoRewardCondition> compareResults = buyingLottos.createCompareResults(winningLotto);
-        return WinningResults.createFrom(compareResults);
+        WinningResults winningResults = WinningResults.createFrom(buyingLottos, winningLotto);
+        return WinningReward.createFrom(winningResults);
     }
 
     private Lottos findBuyingLottosObject() {

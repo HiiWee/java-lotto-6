@@ -3,7 +3,7 @@ package lotto.generator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import lotto.dto.WinningResults;
+import lotto.dto.WinningReward;
 
 public class WinningResultMessageGenerator {
 
@@ -20,19 +20,19 @@ public class WinningResultMessageGenerator {
     private WinningResultMessageGenerator() {
     }
 
-    public static String generate(final WinningResults winningResults) {
-        String winningCountMessage = createWinningCountMessage(winningResults);
-        String prizePercentageMessage = createProfitRatioMessage(winningResults);
+    public static String generate(final WinningReward winningReward) {
+        String winningCountMessage = createWinningCountMessage(winningReward);
+        String prizePercentageMessage = createProfitRatioMessage(winningReward);
         return String.format(MESSAGE_SUMMING_FORMAT, winningCountMessage, prizePercentageMessage);
     }
 
-    private static String createProfitRatioMessage(final WinningResults winningResults) {
-        double profitRatio = winningResults.getProfitRatio();
+    private static String createProfitRatioMessage(final WinningReward winningReward) {
+        double profitRatio = winningReward.profitRatio();
         return String.format(PROFIT_RATIO_FORMAT, profitRatio);
     }
 
-    private static String createWinningCountMessage(final WinningResults winningResults) {
-        List<Integer> sortedRewardCounts = winningResults.getSortedRewardCounts();
+    private static String createWinningCountMessage(final WinningReward winningReward) {
+        List<Integer> sortedRewardCounts = winningReward.sortedRewardCounts();
         return IntStream.range(0, sortedRewardCounts.size())
                 .mapToObj(i -> String.format(WINNING_COUNT_FORMATS.get(i), sortedRewardCounts.get(i)))
                 .collect(Collectors.joining());

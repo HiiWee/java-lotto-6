@@ -1,4 +1,4 @@
-package lotto.dto;
+package lotto.domain.result;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,12 +6,15 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import lotto.domain.lotto.LottoRewardCondition;
+import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.WinningLotto;
 import lotto.domain.money.LottoMoneyCondition;
 
 public record WinningResults(Map<LottoRewardCondition, Integer> results) {
 
-    public static WinningResults createFrom(final List<LottoRewardCondition> rewards) {
-        return new WinningResults(rewards.stream()
+    public static WinningResults createFrom(final Lottos buyingLottos, final WinningLotto winningLotto) {
+        List<LottoRewardCondition> winningResultRewards = buyingLottos.createCompareResults(winningLotto);
+        return new WinningResults(winningResultRewards.stream()
                 .collect(Collectors.groupingBy(Function.identity(),
                         Collectors.collectingAndThen(Collectors.counting(), Long::intValue))));
     }
